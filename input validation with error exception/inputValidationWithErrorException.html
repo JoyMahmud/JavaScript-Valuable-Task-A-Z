@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Validation With Error Exception</title>
+</head>
+<body>
+    <input id="demo" type="text">
+    <button type="button" onclick="myFunction();">Check Here</button>
+    <p id="message"></p>
+
+<script>
+    function myFunction() {
+        var message, x;
+        message = document.getElementById("message");
+        message.innerHTML = "";
+
+        x = document.getElementById("demo").value;
+        try {
+            if (x=="") throw "Empty";
+            if (isNaN(x)) throw "Not a Number";
+            x=Number(x);
+            if (x>5 && x<10) throw "Right. You are Perfect"
+            if (x<5) throw "Too Small";
+            if (x>10) throw "Too Long"
+        }catch (err){
+            message.innerHTML = "Input is "+ err;
+        }
+    }
+
+</script>
+</body>
+</html>
